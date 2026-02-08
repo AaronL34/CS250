@@ -1,0 +1,2 @@
+I honestly thought You wanted everything in the same file so it should all be there, main is structured from top to bottom with task 1 being on top
+and task 8 being at the bottem with helper classes being underneath, I didnt really build this to be modular as I assumed it was for just this assignment
