@@ -165,15 +165,18 @@ public class Operations {
                 comparitoror = "1";
                 comparitorand = "0";
             }
-            if(comparitorand.charAt(0) == third_binary.charAt(i)){
+            if(comparitorxor.charAt(0) == third_binary.charAt(i)){
                 comparitorxor = "0";
+            }else{
+                comparitorxor = "1";
+            }
+            if(comparitorand.charAt(0) == third_binary.charAt(i)){
                 if(third_binary.charAt(i) == '1'){
                     comparitoror = "1";
                     comparitorand = "1";
                 }
                 
             }else{
-                comparitorxor = "1";
                 comparitoror = "1";
                 comparitorand = "0";
             }
