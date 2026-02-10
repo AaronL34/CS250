@@ -8,13 +8,15 @@ import java.io.IOException;
 
 public class Exercise12 {
     public static void main(String[] args) {
-        try(BufferedReader br = new BufferedReader(new FileReader(args[0]))){
+
+        String path = "../" + args[0];
+        try(BufferedReader br = new BufferedReader(new FileReader(path))){
 
             String line;
             while ((line = br.readLine()) !=null){
                 String[] parts = line.split(",");
                 if(parts.length>= 2){
-                    String filepath = parts[0].trim();
+                    String filepath = "../" + parts[0].trim();
                     String info = parts[1].trim();
                     to_csv(filepath, info);
                 }
@@ -23,7 +25,7 @@ public class Exercise12 {
         }catch(IOException e){
 
         }
-        File file = new File(args[0]);
+        File file = new File(path);
             if(file.exists()){
                 file.delete();
                 
