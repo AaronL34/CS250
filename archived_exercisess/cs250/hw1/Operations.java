@@ -100,8 +100,12 @@ public class Operations {
                 second_binary = final_answer_to_binary;
             }
             else if(item.equals("Decimal")){
-                String final_answer_to_hex = find_hex_from_dec(Double.parseDouble(current_item));
-                String final_answer_to_binary = find_bin_from_dec(Double.parseDouble(current_item));
+                double value = 0;
+                for(int i=0; i < current_item.length(); i++){
+                    value = value * 10 + (current_item.charAt(i)) - '0';
+                }
+                String final_answer_to_hex = find_hex_from_dec(value);
+                String final_answer_to_binary = find_bin_from_dec(value);
                 System.out.println("Start"+'='+ current_item +','+"Binary"+"=0b"+ final_answer_to_binary +','+"Decimal"+'='+current_item+','+"Hexadecimal"+ "=0x"+ final_answer_to_hex);
                 binary.put(current_item, final_answer_to_binary);
                 third_binary = final_answer_to_binary;
@@ -260,7 +264,7 @@ public class Operations {
                 deciaml_out += (15 * raise_for_loop);
             }else{
                 String str_item = Character.toString(hexa_decimal.charAt(i));
-                deciaml_out += (Integer.parseInt(str_item) * raise_for_loop);
+                deciaml_out += ((hexa_decimal.charAt(i)-0) * raise_for_loop);
             }
             power_to_raise_dec ++;
         }
