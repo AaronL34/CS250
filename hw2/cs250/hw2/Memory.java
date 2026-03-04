@@ -1,7 +1,9 @@
 package cs250.hw2;
 
 import java.sql.Time;
+import java.util.LinkedList;
 import java.util.Random;
+import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 public class Memory {
@@ -26,8 +28,9 @@ public class Memory {
         Task2 secondtask = new Task2(size, experments, seed);
         secondtask.run();
 
-
-        System.out.println("Task 3");
+        //task 3
+        Task3 thirdtask = new Task3(size,experments,seed);
+        thirdtask.run();
     }
 
     public static class Task1 {
@@ -157,4 +160,54 @@ public class Memory {
 
     }
     
+    public static class Task3{
+        private int size;
+        private int experments;
+        private int seed;
+        public Task3(int size, int experments, int seed){
+            this.size = size;
+            this.experments = experments;
+            this.seed = seed;
+        }
+        public void run(){
+            System.out.println("Task 3");
+
+            TreeSet<Integer> treeSet = new TreeSet<>();
+            LinkedList<Integer> linkedList = new LinkedList<>();
+
+            Random rand = new Random(seed);
+
+            for(int i = 0; i < size; i++){
+                treeSet.add(i);
+                linkedList.add(i);
+            }
+
+            long total_tree_time = 0;
+            long total_linked_time = 0;
+
+
+            for(int e = 0; e<experments; e++){
+                int random_value = rand.nextInt(size);
+
+                long start = System.nanoTime();
+                boolean found_tree = treeSet.contains(random_value);
+                long end = System.nanoTime();
+                total_tree_time += (end - start);
+
+                start = System.nanoTime();
+                boolean found_list = linkedList.contains(random_value);
+                end = System.nanoTime();
+                total_linked_time += (end - start);
+
+            }
+
+            double avg_tree_time = total_tree_time / (double)experments;
+            double avg_linked_time = total_linked_time / (double)experments;
+
+            System.out.printf("Avg time to find in set: %.2f nanoseconds%n", avg_tree_time);
+            System.out.printf("Avg time to find in list: %.2f nanoseconds%n", avg_linked_time);
+
+        }
+
+    }
 }
