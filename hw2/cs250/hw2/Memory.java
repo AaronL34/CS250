@@ -71,7 +71,7 @@ public class Memory {
             System.out.println("Avg volatile sum: " + average_vol_sum);
         }
 
-        public long loop(Integer size){
+        public long loop(int size){
             //main loop
             long running_total = 0;
 
@@ -84,7 +84,7 @@ public class Memory {
             }
             return running_total;
         }
-        public long vol_loop(Integer size){
+        public long vol_loop(int size){
             //main loop
             long running_total = 0;
 
@@ -129,22 +129,19 @@ public class Memory {
             
 
             for(int e = 0; e<experments; e++){
+                long start = System.nanoTime();
                 for(int i =0; i<first_10; i++){
-                    long start = System.nanoTime();
-                    int value = int_of_size[i];
-                    long end = System.nanoTime();
-
-                    total_first_time+= (end - start);
-                    total_sum += value;
+                    total_sum += int_of_size[i];
                 }
+                long end = System.nanoTime();
+                total_first_time += (end - start);
 
                 int random_index = last_10_start_index + rand.nextInt(first_10);
-                long start = System.nanoTime();
-                int value = int_of_size[random_index];
-                long end = System.nanoTime();
+                start = System.nanoTime();
+                total_sum += int_of_size[random_index];
+                end = System.nanoTime();
 
                 total_random_time += (end - start);
-                total_sum += value;
 
             }
 
